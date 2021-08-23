@@ -10,12 +10,11 @@ from fastapi import (
 )
 from datetime import datetime
 from pydantic import BaseModel, Field, EmailStr
-from sqlalchemy.sql.elements import True_
 from model import train, convert, predict
 import databases, datetime, uuid, sqlalchemy
 from sqlalchemy import desc
 from typing import List
-import pytz, json, re
+import pytz, re
 
 from starlette.responses import JSONResponse
 from starlette.requests import Request
