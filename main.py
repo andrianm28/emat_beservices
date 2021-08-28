@@ -10,11 +10,12 @@ from fastapi import (
 )
 from datetime import datetime
 from pydantic import BaseModel, Field, EmailStr
+from sqlalchemy.sql.elements import True_
 from model import train, convert, predict
 import databases, datetime, uuid, sqlalchemy
 from sqlalchemy import desc
 from typing import List
-import pytz, re
+import pytz, json, re
 
 from starlette.responses import JSONResponse
 from starlette.requests import Request
@@ -146,6 +147,7 @@ async def fetch_energies():
     #     daily_energy.append({'id': i['id'], 'created_at': i['created_at'], 'energy': substract})
     # print(daily_energy)
     print(len(daily))
+    print(daily)
     return daily
 
 @app.get("/monthly_energies")
