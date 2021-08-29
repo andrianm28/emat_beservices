@@ -149,7 +149,7 @@ async def fetch_energies():
     for idx in range(len(daily)):
         if idx>0:
             substract = daily[idx]['energy'] - daily[idx-1]['energy']
-            daily_energy.append({'id': i['id'], 'created_at': i['created_at'], 'energy': substract})
+            daily_energy.append({'id': daily[idx]['id'], 'created_at': daily[idx]['created_at'], 'energy': abs(substract), 'power': daily[idx]['power'], 'voltage': daily[idx]['voltage'], 'current': daily[idx]['current'], 'frequency': daily[idx]['frequency'], 'power_factor': daily[idx]['power_factor']})
 
     print(len(daily_energy))
     print(daily_energy)
