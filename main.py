@@ -125,27 +125,24 @@ async def shutdown():
 #     return JSONResponse(status_code=200, content={"message": "email has been sent"})
 
 @app.get("/hourly_energies", response_model=List[Energies])
-async def fetch_energies():
+async def fetch_hourly_energies():
     query = energies.select().order_by(energies.c.created_at.desc())
     lists = await database.fetch_all(query)
     # lists_json = jsonable_encoder(lists)
-    # print(lists_json)
+    print(len(lists))
+    print(lists)
     return lists
 
 lists_dict = {}
 @app.get("/daily_energies", response_model=List[Energies])
-async def fetch_energies():
+async def fetch_daily_energies():
     query = energies.select().order_by(energies.c.created_at.desc())
     lists = await database.fetch_all(query)
     lists_json = jsonable_encoder(lists)
     lists_dict[energies] = lists_json
-    r = re.compile('.* 23:.*')
+    r = re.compile('.* 00:.*')
     daily = [d for d in lists_dict[energies] if re.match(r,d['created_at'])]
     daily_energy = []
-    # for i in daily:
-    #     substract = i['energy'] - i-1['energy']
-    #     daily_energy.append({'id': i['id'], 'created_at': i['created_at'], 'energy': substract})
-    # print(daily_energy)
     for idx in range(len(daily)):
         if idx>0:
             substract = daily[idx]['energy'] - daily[idx-1]['energy']
@@ -243,6 +240,8 @@ async def fetch_monthly_energies():
             "monthly_budget": 0.0
         }
     ]
+    print(len(monthly_e))
+    print(monthly_e)
     return monthly_e
 
 # @app.get("/current-energy", response_model= Energies)
