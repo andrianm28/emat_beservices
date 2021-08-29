@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 TODAY = datetime.date.today()
 
 
-def train(ticker="MSFT"):
+def train(ticker="AAPL"):
     data = yf.download("^GSPC", "2008-01-01", TODAY.strftime("%Y-%m-%d"))
     data = yf.download(ticker, "2020-01-01", TODAY.strftime("%Y-%m-%d"))
     data.head()
@@ -29,7 +29,7 @@ def train(ticker="MSFT"):
     joblib.dump(model, Path(BASE_DIR).joinpath(f"{ticker}.joblib"))
 
 
-def predict(ticker="MSFT", days=7):
+def predict(ticker="AAPL", days=7):
     model_file = Path(BASE_DIR).joinpath(f"{ticker}.joblib")
     if not model_file.exists():
         return False

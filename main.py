@@ -141,14 +141,19 @@ async def fetch_energies():
     lists_dict[energies] = lists_json
     r = re.compile('.* 23:.*')
     daily = [d for d in lists_dict[energies] if re.match(r,d['created_at'])]
-    # daily_energy = []
+    daily_energy = []
     # for i in daily:
     #     substract = i['energy'] - i-1['energy']
     #     daily_energy.append({'id': i['id'], 'created_at': i['created_at'], 'energy': substract})
     # print(daily_energy)
-    print(len(daily))
-    print(daily)
-    return daily
+    for idx in range(len(daily)):
+        if idx>0:
+            substract = daily[idx]['energy'] - daily[idx-1]['energy']
+            daily_energy.append({'id': i['id'], 'created_at': i['created_at'], 'energy': substract})
+
+    print(len(daily_energy))
+    print(daily_energy)
+    return daily_energy
 
 @app.get("/monthly_energies")
 async def fetch_monthly_energies():
@@ -277,11 +282,7 @@ async def pong():
 
 # @app.post("/predict", response_model=StockOut, status_code=200)
 # def get_prediction(payload: StockIn):
-#     train("FB")
 #     train("AAPL")
-#     train("GOOGL")
-#     train("MSFT")
-
 #     ticker = payload.ticker
 
 #     prediction_list = predict(ticker)
@@ -292,5 +293,5 @@ async def pong():
 #     response_object = {"ticker": ticker, "forecast": convert(prediction_list)}
 #     return response_object
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
