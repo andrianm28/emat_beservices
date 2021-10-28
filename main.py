@@ -33,7 +33,7 @@ from fastapi.encoders import jsonable_encoder
 tz = pytz.timezone('Asia/Jakarta')
 
 ## Postgres Database
-DATABASE_URL = "postgres://podbrtrvupzwrs:3ae577a84fe32e348dd104312d8d6cd7a60b90e063c3803cad90c8b341278892@ec2-34-233-0-64.compute-1.amazonaws.com:5432/d8mf2fka342hhv"
+DATABASE_URL = "postgres://ksqtulpmkazkij:f7d36026dda4497b14a95e7591e82695f140ebe6ad33111a8fcfdc6200a6c396@ec2-52-0-114-209.compute-1.amazonaws.com:5432/dfajsb49e8vf0i"
 database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 
