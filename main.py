@@ -11,7 +11,7 @@ from fastapi import (
 from datetime import datetime
 from pydantic import BaseModel, Field, EmailStr
 from sqlalchemy.sql.elements import True_
-from model import train, convert, predict
+from model import predict
 import databases, datetime, uuid, sqlalchemy
 from sqlalchemy import desc
 from typing import List
@@ -157,6 +157,11 @@ async def fetch_daily_energies():
         current_energy = energy['energy'] - previous_energy
         previous_energy = energy['energy']
         daily_energy.append({'id': energy['id'], 'created_at': energy['created_at'], 'energy': abs(current_energy), 'power': energy['power'], 'voltage': energy['voltage'], 'current': energy['current'], 'frequency': energy['frequency'], 'power_factor': energy['power_factor']})
+
+    if predict(daily_energy):
+        telegram_send.send(messages=["Akan terjadi lonjakan tagihan bulan depan!"])
+    else:
+        telegram_send.send(messages=["amann"])
 
     print(len(daily_energy))
     print(daily_energy)
