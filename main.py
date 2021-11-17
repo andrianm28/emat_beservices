@@ -172,6 +172,27 @@ async def fetch_monthly_energies():
     monthly_e = [
         {
             "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
+            "month_simple": "Nov",
+            "month_full": "November",
+            "monthly_power": 665.0,
+            "monthly_budget": 1000000.0
+        },
+        {
+            "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
+            "month_simple": "Oct",
+            "month_full": "October",
+            "monthly_power": 555.0,
+            "monthly_budget": 1000000.0
+        },
+        {
+            "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
+            "month_simple": "Sep",
+            "month_full": "September",
+            "monthly_power": 623.0,
+            "monthly_budget": 1000000.0
+        },
+        {
+            "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
             "month_simple": "Aug",
             "month_full": "August",
             "monthly_power": 528.0,
@@ -230,27 +251,6 @@ async def fetch_monthly_energies():
             "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
             "month_simple": "Dec",
             "month_full": "December",
-            "monthly_power": 0.0,
-            "monthly_budget": 0.0
-        },
-        {
-            "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
-            "month_simple": "Nov",
-            "month_full": "November",
-            "monthly_power": 0.0,
-            "monthly_budget": 0.0
-        },
-        {
-            "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
-            "month_simple": "Oct",
-            "month_full": "October",
-            "monthly_power": 0.0,
-            "monthly_budget": 0.0
-        },
-        {
-            "id": "2ebeb9e2-9d7d-11eb-a902-acde48001122",
-            "month_simple": "Sep",
-            "month_full": "September",
             "monthly_power": 0.0,
             "monthly_budget": 0.0
         }
