@@ -158,13 +158,13 @@ async def fetch_daily_energies():
         previous_energy = energy['energy']
         daily_energy.append({'id': energy['id'], 'created_at': energy['created_at'], 'energy': abs(current_energy), 'power': energy['power'], 'voltage': energy['voltage'], 'current': energy['current'], 'frequency': energy['frequency'], 'power_factor': energy['power_factor']})
 
-    if predict(daily_energy):
-        telegram_send.send(messages=["Akan terjadi lonjakan tagihan bulan depan!"])
-    else:
-        telegram_send.send(messages=["amann"])
+    # if predict(daily_energy):
+    #     telegram_send.send(messages=["Akan terjadi lonjakan tagihan bulan depan!"])
+    # else:
+    #     telegram_send.send(messages=["amann"])
 
-    print(len(daily_energy))
-    print(daily_energy)
+    # print(len(daily_energy))
+    # print(daily_energy)
     return daily_energy
 
 @app.get("/monthly_energies")
